@@ -43,6 +43,7 @@ class CreateAppointmentService {
     }
     const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
       appointmentDate,
+      provider_id,
     );
 
     if (getHours(appointmentDate) < 8 || getHours(appointmentDate) > 17) {
