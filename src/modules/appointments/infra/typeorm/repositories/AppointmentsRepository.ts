@@ -5,6 +5,7 @@ import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointment
 import IFindAllInMonthFromProviderDTO from '@modules/appointments/dtos/IFindAllInMonthFromProviderDTO';
 import IFindAllInDayFromProviderDTO from '@modules/appointments/dtos/IFindAllInDayFromProviderDTO';
 
+import { date } from '@hapi/joi';
 import Appointment from '../entities/Appointment';
 
 class AppointmentsRepository implements IAppointmentsRepository {
@@ -62,6 +63,9 @@ class AppointmentsRepository implements IAppointmentsRepository {
         ),
       },
       relations: ['user'],
+      order: {
+        date: 'ASC',
+      },
     });
     return appointments;
   }
